@@ -1,0 +1,15 @@
+CalcolaPianoRilassato(v,goal,G,tempo,maxOrizzonteTemporale)
+	current<-v
+	t<-tempo
+	path<-new Path(v,goal)
+	while(current!=goal && t<maxOrizzonteTmorale)
+		foreach n in vicini[current]
+			h(n,goal)<-calcolaEuristica(n,goal)
+		n<-vicino con euristica minore
+		path <- aggiungi mossa (t,current,n,w)
+		t++
+		current<-n
+	return path
+
+
+		

@@ -5,7 +5,7 @@ class Griglia:
         self.rows = rows
         self.cols = cols
 
-        self.celleOccupate = set() #set contenente le coppie (r,c): celle occupate da ostacolo
+        self.celleOccupate = set() #set contenente le coppie (c,r): celle occupate da ostacolo
         
     def getNumRows(self):
         """Restituisce il numero di righe"""
@@ -15,5 +15,11 @@ class Griglia:
         """Restituisce il numero di colonne"""
         return self.cols
     
-    def addOstacolo(self, r, c):
-        self.celleOccupate.add((r,c))
+    def addOstacolo(self, c, r):
+        self.celleOccupate.add((c,r))
+
+    def isCellaOccupata(self, c, r):
+        return (c,r) in self.celleOccupate
+    
+    def getNumCelleLibere(self):
+        return (self.rows*self.cols) - len(self.celleOccupate)

@@ -1,0 +1,1 @@
+- nell'aggiunta degli ostacoli singoli, controllo adiacenza con agglomerazioni

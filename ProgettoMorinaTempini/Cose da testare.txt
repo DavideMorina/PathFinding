@@ -1,0 +1,18 @@
+prestazioni (spaziali e temporali) riscontrate
+
+
+GENERATORE GRID
+
+
+
+
+
+REACHGOL (E RILASSATO VS NON RILASSATO)
+al variare di parameteri come:
+    dimensioni griglia
+    percentuale celle attraversabili
+    num agenti
+    lunghezza path n agenti
+    maxOrizzonteTemporale
+    (altro ?)
+
