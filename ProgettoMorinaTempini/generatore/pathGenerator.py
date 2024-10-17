@@ -29,12 +29,14 @@ def generaPaths(inits, goalinit, nagents, limiteLunghezzaPathsEsistenti, grafo):
                 print("Il path per l'agente ("+ str(i+1) +") non aveva mosse diponibili")
                 return None
             
-            if(tempo==limitePath-1):
+            if(tempo==limitePath-1): #sono all'ultima mossa
                 for arco in mossedisponibili:
                     #print(arco.dest)
-                    if arco.dest in list(goalinit.keys()):
+                    mossedisponibili = Path.rimuoviArriviIllegali(mossedisponibili, tempo, paths)
+                    if arco.dest in list(goalinit.keys()): #se vado sul goal dell'n+1
                         mossedisponibili.remove(arco)
                         break    
+                    
 
             arco=random.choice(mossedisponibili)
 

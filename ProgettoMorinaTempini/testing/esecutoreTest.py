@@ -36,7 +36,7 @@ def letturaParametri():
 
 def randomTesting():
     """Metodo per far comportare le generazioni random in un modo deterministico -> ci permette di rigenerare le stesse istanze"""
-    seed = 22
+    seed = 20
     random.seed(seed)
     np.random.seed(seed)
 

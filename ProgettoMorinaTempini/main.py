@@ -62,7 +62,7 @@ def letturaParametri():
 
 def randomTesting(usaRilassato):
     """Metodo per far comportare le generazioni random in un modo deterministico -> ci permette di rigenerare le stesse istanze"""
-    seed = 2
+    seed = 7
     random.seed(seed)
     np.random.seed(seed)
     return False, usaRilassato

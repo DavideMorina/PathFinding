@@ -85,8 +85,16 @@ class Path:
                 if (dst_p_r == dst[1] and dst_p_c == dst[0]-1): return True
 
         return False
+    
+    def passeraSulGoal(self, tempo, goal):
+        for chiaveMossa in self.mosse: #chiaveMossa è anche il tempo associato a quella mossa
+            t=chiaveMossa
+            mossa = self.getMossa(chiaveMossa)
+            if(mossa.getDst() == goal and t>tempo):
+                return True
+        return False
      
-    def isMossaIllegale(self, orig, dst, tempo):
+    def isMossaIllegale(self, orig, dst, tempo, goal=None):
         #caso 1: allo stesso tempo dest uguale
         if(self.esisteMossaAlTempoT(tempo) and dst == self.getMossa(tempo).getDst()):
             return True
@@ -96,7 +104,10 @@ class Path:
         #caso 3: altro agente ha finito (ed è al goal)
         elif(not self.esisteMossaAlTempoT(tempo) and dst == self.getGoal()):
             return True
-        #caso 4: scambio in diagonale
+        #caso 4: raggiunge e si ferma al goal, ma in quella casella dovrà passare il percorso self in un tempo futuro
+        elif(goal!=None and dst == goal and self.passeraSulGoal(tempo, goal)):
+            return True
+        #caso 5: scambio in diagonale
         elif(self.esisteMossaAlTempoT(tempo)):
             return self.checkCollisioneDiagonale(orig, dst, tempo)
         #nessuna delle precedenti si è verificata --> mossa legale
@@ -117,7 +128,17 @@ class Path:
                     mossedisponibili.remove(arco)
                     break
 
-        return mossedisponibili    
+        return mossedisponibili  
+
+    @staticmethod
+    def rimuoviArriviIllegali(mossedisponibili, tempo, paths):
+        for arco in mossedisponibili :
+            for p in paths:
+                if p.passeraSulGoal(tempo, arco.dest):
+                    mossedisponibili.remove(arco)
+                    break
+
+        return mossedisponibili
 
 
     @staticmethod
@@ -145,6 +166,6 @@ class Path:
         print("Goal node: ", self.getGoal())
         print("Path: ")
         for mossa in self.mosse:
-            print(self.getMossa(mossa))
+            print(self.getMossa(mossa), mossa)
 
 

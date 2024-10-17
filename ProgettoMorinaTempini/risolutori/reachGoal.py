@@ -19,8 +19,8 @@ def reachGoal(grafo, paths, init, goal, maxOrizzonteTemporale, usaRilassato=Fals
 
     """for t in range(maxOrizzonteTemporale+1):
         for vertice in grafo.getNodi():
-            gDict[(vertice,t)]=math.inf
-            #p -> nil"""
+            gDict[(vertice,t)]=math.inf"""
+            #p -> nil
     
     gDict[(init,0)] = 0
     euristica = calcolaEuristica(grafo, goal) #hash di euristiche, chiave: coppia (vertice,goal), valore: h(vertice,goal)
@@ -36,17 +36,20 @@ def reachGoal(grafo, paths, init, goal, maxOrizzonteTemporale, usaRilassato=Fals
         openList.remove(current)
         closedList.append(current)
         if (verticeCurrent == goal):
-            return reconstructPath(init,goal,parentDict,tempo), contatoreOpen, len(closedList)
+            return reconstructPath(init,goal,parentDict,tempo, 0), contatoreOpen, len(closedList)
         
         #Condizione terminazione rilassato
         if(usaRilassato):
             pathRilassato = calcolaPianoRilassato(verticeCurrent, goal, grafo, tempo, maxOrizzonteTemporale)
             if(pathRilassato is not None):
-                if(collisionFree(paths, pathRilassato, tempo)):
-                    return combinaPaths(pathRilassato, reconstructPath(init, verticeCurrent, parentDict, tempo)), contatoreOpen, len(closedList)
+                # for p in paths:
+                #     if(p.isMossaIllegale(pathRilassato.getMossa(tempo), pathRilassato.getMossa(tempo+1), tempo)):
+                if(collisionFree(paths, pathRilassato, tempo, goal)):
+                    print("AAAAAAAAAAAAAAA")
+                    print(verticeCurrent)
+                    return combinaPaths(pathRilassato, reconstructPath(init, verticeCurrent, parentDict, tempo, 0)), contatoreOpen, len(closedList)
 
         if (tempo < maxOrizzonteTemporale):
-
             for arco in grafo.getVicini(verticeCurrent):
                 nodo=arco.dest
                 peso=arco.peso
@@ -54,10 +57,11 @@ def reachGoal(grafo, paths, init, goal, maxOrizzonteTemporale, usaRilassato=Fals
                 if((nodo,nextTempo) not in closedList):
                     attraversabile = True
                     for percorsoPrecedente in paths: #checkIllegalMove
-                        if(percorsoPrecedente.isMossaIllegale(verticeCurrent, nodo, tempo)):
+                        if(percorsoPrecedente.isMossaIllegale(verticeCurrent, nodo, tempo, goal)):
                             attraversabile = False
                     if(attraversabile):
-                        gDict[(nodo, nextTempo)]=math.inf
+                        setdefault_g(gDict, (nodo, nextTempo), float('inf'))
+                        #gDict[(nodo, nextTempo)]=math.inf  #inizializzo gDict
                         if(gDict[(verticeCurrent, tempo)] + peso < gDict[(nodo, nextTempo)]):
                             parentDict[(nodo, nextTempo)] = (verticeCurrent, tempo)
                             gDict[(nodo, nextTempo)] = gDict[(verticeCurrent, tempo)] + peso
@@ -68,20 +72,25 @@ def reachGoal(grafo, paths, init, goal, maxOrizzonteTemporale, usaRilassato=Fals
 
     return None, None, None #se non è possibile raggiungere il goal
 
-def collisionFree(paths, pathRilassato, tempo):
+def collisionFree(paths, pathRilassato, tempo, goal):
     for p in paths:
         t = tempo
         for mossa in pathRilassato.getMosse():
-            if(p.isMossaIllegale(mossa[1].getOrig(), mossa[1].getDst(), t)):
+            if(p.isMossaIllegale(mossa[1].getOrig(), mossa[1].getDst(), t, goal)):
                 return False
             t += 1
     return True
 
 def combinaPaths(pathRilassato, pathReconstruct):
     #aggiunta delle mosse del pathRilassato alla fine del pathReconstruct
-    pathReconstruct.invertiMosse() #ordiniamo mosse path parziale costruito con reachgoal
+    pathReconstruct.invertiMosse() #ordiniamo mosse path parziale costruito con reachgoal classico
     for mossa in pathRilassato.getMosse(): 
         #print(mossa)
         pathReconstruct.addMossa(mossa[0], mossa[1])
     pathReconstruct.setGoal(pathRilassato.getGoal()) #settiamo il goal del path composto
     return pathReconstruct
+
+def setdefault_g(dizionario, chiave, valore_predefinito):
+    if chiave not in dizionario:
+        dizionario[chiave] = valore_predefinito
+    return dizionario[chiave]
