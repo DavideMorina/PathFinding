@@ -1,0 +1,11 @@
+{
+    "rows":"25",
+    "columns":"25",
+    "freeCellRatio":"0.7",
+    "agglomerationFactor":"0.2",
+    "nagents": "20",
+    "limiteLunghezzaPathsEsistenti": "40",
+    "usareReachGoalAgentiPreesistenti": "True",
+    "maxOrizzonteTemporale": "50",
+    "usaRilassato": "False"
+}

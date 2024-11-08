@@ -1,0 +1,102 @@
+Generato il: Fri Nov  8 10:16:53 2024
+Numero di righe: 45
+Numero di colonne: 45
+Rapporto di celle libere: 0.7
+Fattore di agglomerazione: 0.2
+Numero di agenti: 50
+Usato ReachGoal 
+Non usato piano rilassato per generazione istanza
+Lunghezza massima dei percorsi degli agenti preesistenti: 40
+Lunghezza dei percorsi degli agenti preesistenti: 
+	Path 1: 19
+	Path 2: 9
+	Path 3: 24
+	Path 4: 21
+	Path 5: 11
+	Path 6: 13
+	Path 7: 9
+	Path 8: 23
+	Path 9: 14
+	Path 10: 35
+	Path 11: 27
+	Path 12: 34
+	Path 13: 32
+	Path 14: 20
+	Path 15: 14
+	Path 16: 41
+	Path 17: 28
+	Path 18: 33
+	Path 19: 30
+	Path 20: 11
+	Path 21: 14
+	Path 22: 44
+	Path 23: 18
+	Path 24: 21
+	Path 25: 32
+	Path 26: 24
+	Path 27: 20
+	Path 28: 15
+	Path 29: 30
+	Path 30: 30
+	Path 31: 6
+	Path 32: 33
+	Path 33: 24
+	Path 34: 22
+	Path 35: 27
+	Path 36: 41
+	Path 37: 39
+	Path 38: 24
+	Path 39: 7
+	Path 40: 35
+	Path 41: 29
+	Path 42: 42
+	Path 43: 29
+	Path 44: 28
+	Path 45: 34
+	Path 46: 23
+	Path 47: 47
+	Path 48: 25
+	Path 49: 20
+	Path 50: 32
+Valore max orizzonte temporale: 50
+Init n+1-esimo agente: (42, 35)
+Goal n+1-esimo agente: (6, 19)
+----------------------------------------------------------------
+Risoluzione con ReachGoal normale:
+Lunghezza del percorso dell' n+1-esimo agente: 37
+Costo del percorso dell' n+1-esimo agente: 43.21320343559641
+Numero di mosse wait: 0
+Numero stati espansi in lista open: 697
+Numero stati espansi in lista closed: 246
+----------------------------------------------------------------
+Risoluzione con ReachGoal rilassato:
+Lunghezza del percorso dell' n+1-esimo agente: 37
+Costo del percorso dell' n+1-esimo agente: 43.21320343559642
+Numero di mosse wait: 0
+Numero stati espansi in lista open: 393
+Numero stati espansi in lista closed: 108
+----------------------------------------------------------------
+Generazione griglia e grafo: 
+Tempo di esecuzione: 0.09047913551330566 secondi
+Memoria utilizzata: 1.772368 MB 
+Picco di memoria: 1.772512 MB 
+----------------------------------------------------------------
+Generazione istanza pseudo casuale: 
+Tempo di esecuzione: 0.3137202262878418 secondi
+Memoria utilizzata: 0.173224 MB 
+Picco di memoria: 0.173336 MB 
+----------------------------------------------------------------
+Generazione istanza con ReachGoal: 
+Tempo di esecuzione: 15.648334980010986 secondi
+Memoria utilizzata: 0.296208 MB 
+Picco di memoria: 3.883784 MB 
+----------------------------------------------------------------
+Risoluzione istanza con ReachGoal normale: 
+Tempo di esecuzione: 0.16613435745239258 secondi
+Memoria utilizzata: 0.100104 MB 
+Picco di memoria: 0.429792 MB 
+----------------------------------------------------------------
+Risoluzione istanza con ReachGoal rilassato: 
+Tempo di esecuzione: 2.7182116508483887 secondi
+Memoria utilizzata: 0.12104 MB 
+Picco di memoria: 0.699272 MB 

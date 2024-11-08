@@ -1,0 +1,41 @@
+Generato il: Fri Nov  8 11:27:51 2024
+Numero di righe: 25
+Numero di colonne: 25
+Rapporto di celle libere: 0.7
+Fattore di agglomerazione: 0.2
+Numero di agenti: 20
+Usato ReachGoal 
+Non usato piano rilassato 
+Lunghezza massima dei percorsi degli agenti preesistenti: 40
+Lunghezza dei percorsi degli agenti preesistenti: 
+	Path 1: 23
+	Path 2: 17
+	Path 3: 16
+	Path 4: 23
+	Path 5: 17
+	Path 6: 7
+	Path 7: 13
+	Path 8: 20
+	Path 9: 15
+	Path 10: 10
+	Path 11: 12
+	Path 12: 10
+	Path 13: 6
+	Path 14: 11
+	Path 15: 21
+	Path 16: 7
+	Path 17: 5
+	Path 18: 12
+	Path 19: 10
+	Path 20: 1
+Valore max orizzonte temporale: 50
+Init n+1-esimo agente: (5, 6)
+Goal n+1-esimo agente: (16, 5)
+Lunghezza del percorso dell' n+1-esimo agente: 11
+Costo del percorso dell' n+1-esimo agente: 13.071067811865476
+Numero di mosse wait: 0
+Numero stati espansi in lista open: 180
+Numero stati espansi in lista closed: 62
+Tempo di esecuzione: 0.531585693359375 secondi
+Memoria utilizzata: 0.690832 MB 
+Picco di memoria: 0.884252 MB 
